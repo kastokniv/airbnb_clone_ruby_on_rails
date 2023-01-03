@@ -1,8 +1,8 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "Homes", type: :request do
   describe "GET /index" do
-    it "succeds"do
+    it "succeeds" do
       get root_path
       expect(response).to be_successful
     end
