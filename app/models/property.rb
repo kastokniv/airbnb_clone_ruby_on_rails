@@ -1,4 +1,10 @@
+# frozen_string_literal: true
+
 class Property < ApplicationRecord
+    CLEANING_FEE = 3_000.freeze
+    CLEANING_FEE_MONEY = Money.new(CLEANING_FEE)
+    SERVICE_FEE_PERCENTAGE = (0.08).freeze
+
     validates :name, presence: true
     validates :headline, presence: true
     validates :description, presence: true
@@ -17,6 +23,9 @@ class Property < ApplicationRecord
     has_many :reviews, as: :reviewable
     has_many :favourites, dependent: :destroy
     has_many :favourited_users, through: :favourites, source: :user
+    has_many :reservations, dependent: :destroy
+    has_many :payments, through: :reservations
+    has_many :reserved_users, through: :reservations, source: :user
 
     def address
         # [address_1, address_2, city, state, country].compact.join(', ')
@@ -31,5 +40,13 @@ class Property < ApplicationRecord
         return if user.nil?
 
         favourited_users.include?(user)
+    end
+
+    def available_dates
+        date_format = "%b %e"
+        next_reservation = reservations.future_reservations.order(checkout_date: :desc).first
+        return Date.tomorrow.strftime(date_format)..Date.today.end_of_year.strftime(date_format) if next_reservation.nil?
+
+        next_reservation.checkout_date.strftime(date_format)..Date.today.end_of_year.strftime(date_format)
     end
 end

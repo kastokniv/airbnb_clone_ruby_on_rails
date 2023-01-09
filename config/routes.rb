@@ -10,4 +10,10 @@ Rails.application.routes.draw do
 
     resources :favourites, only: [:create, :destroy]
   end
+
+  resources :properties, only: :show do
+    resources :reservations, only: :new, controller: "properties/reservations"
+  end
+
+  resources :reservation_payments, only: :create
 end
