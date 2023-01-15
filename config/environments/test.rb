@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require "active_support/core_ext/integer/time"
 
-# The test environment is used exclusively to run your application's
+# The test environment is used exclusively to run your application"s
 # test suite. You never need to work with it otherwise. Remember that
 # your test database is "scratch space" for the test suite and is wiped
-# and recreated between test runs. Don't rely on the data there!
+# and recreated between test runs. Don"t rely on the data there!
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -12,7 +14,7 @@ Rails.application.configure do
   config.cache_classes = true
 
   # Eager loading loads your whole application. When running a single test locally,
-  # this probably isn't necessary. It's a good idea to do in a continuous integration
+  # this probably isn"t necessary. It"s a good idea to do in a continuous integration
   # system, or in some way before deploying your code.
   config.eager_load = ENV["CI"].present?
 
@@ -57,6 +59,6 @@ Rails.application.configure do
 
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
-    # To prevent error caused by the sassc-rails gem when running tests in ruby
-    config.assets.css_compressor = nil
+  # To prevent error caused by the sassc-rails gem when running tests in ruby
+  config.assets.css_compressor = nil
 end

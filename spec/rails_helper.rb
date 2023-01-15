@@ -1,27 +1,29 @@
-# This file is copied to spec/ when you run 'rails generate rspec:install'
-require 'spec_helper'
-ENV['RAILS_ENV'] ||= 'test'
-require_relative '../config/environment'
-# Prevent database truncation if the environment is production
+# frozen_string_literal: true
+
+# This file is copied to spec/ when you run "rails generate rspec:install"
+require "spec_helper"
+ENV["RAILS_ENV"] ||= "test"
+require_relative "../config/environment"
+# Prevent datab"e truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
-require 'rspec/rails'
+require "rspec/rails"
 require "money-rails/test_helpers"
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
-# run as spec files by default. This means that files in spec/support that end
-# in _spec.rb will both be required and run as specs, causing the specs to be
+# run " spec files by default. This means that files in spec/support that end
+# in _spec.rb will both be required and run " specs, causing the specs to be
 # run twice. It is recommended that you do not name files matching this glob to
 # end with _spec.rb. You can configure this pattern with the --pattern
 # option on the command line or in ~/.rspec, .rspec or `.rspec-local`.
 #
-# The following line is provided for convenience purposes. It has the downside
-# of increasing the boot-up time by auto-requiring all files in the support
+# The following line is provided for convenience purposes. It h" the downside
+# of incre"ing the boot-up time by auto-requiring all files in the support
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-# Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
+# Dir[Rails.root.join("spec", "support", "**", "*.rb")].sort.each { |f| require f }
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
@@ -33,11 +35,11 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
-  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
+  # Remove this line if you"re not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
-  # If you're not using ActiveRecord, or you'd prefer not to run each of your
-  # examples within a transaction, remove the following line or assign false
+  # If you"re not using ActiveRecord, or you"d prefer not to run each of your
+  # examples within a transaction, remove the following line or "sign false
   # instead of true.
   config.use_transactional_fixtures = true
 
@@ -45,7 +47,7 @@ RSpec.configure do |config|
   # config.use_active_record = false
 
   # RSpec Rails can automatically mix in different behaviours to your tests
-  # based on their file location, for example enabling you to call `get` and
+  # b"ed on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.
   #
   # You can disable this behaviour by removing the line below, and instead
@@ -55,7 +57,7 @@ RSpec.configure do |config|
   #       # ...
   #     end
   #
-  # The different available types are documented in the features, such as in
+  # The different available types are documented in the features, such " in
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
 

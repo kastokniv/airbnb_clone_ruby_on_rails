@@ -1,52 +1,54 @@
 # frozen_string_literal: true
 
 class Property < ApplicationRecord
-    CLEANING_FEE = 3_000.freeze
-    CLEANING_FEE_MONEY = Money.new(CLEANING_FEE)
-    SERVICE_FEE_PERCENTAGE = (0.08).freeze
+  include Countriable
 
-    validates :name, presence: true
-    validates :headline, presence: true
-    validates :description, presence: true
-    validates :address_1, presence: true
-    validates :city, presence: true
-    validates :state, presence: true
-    validates :country, presence: true
+  CLEANING_FEE = 3_000
+  CLEANING_FEE_MONEY = Money.new(CLEANING_FEE)
+  SERVICE_FEE_PERCENTAGE = 0.08
 
-    monetize :price_cents, allow_nil: true
+  validates :name, presence: true
+  validates :headline, presence: true
+  validates :description, presence: true
+  validates :address_1, presence: true
+  validates :city, presence: true
+  validates :state, presence: true
+  validates :country_code, presence: true
 
-    geocoded_by :address
-    after_validation :geocode, if: -> { latitude.blank? && longitude.blank? }
+  monetize :price_cents, allow_nil: true
 
-    has_many_attached :images, dependent: :destroy
+  geocoded_by :address
+  after_validation :geocode, if: -> { latitude.blank? && longitude.blank? }
 
-    has_many :reviews, as: :reviewable
-    has_many :favourites, dependent: :destroy
-    has_many :favourited_users, through: :favourites, source: :user
-    has_many :reservations, dependent: :destroy
-    has_many :payments, through: :reservations
-    has_many :reserved_users, through: :reservations, source: :user
+  has_many_attached :images, dependent: :destroy
 
-    def address
-        # [address_1, address_2, city, state, country].compact.join(', ')
-        [state, country].compact.join(', ')
-    end
+  has_many :reviews, as: :reviewable
+  has_many :favourites, dependent: :destroy
+  has_many :favourited_users, through: :favourites, source: :user
+  has_many :reservations, dependent: :destroy
+  has_many :payments, through: :reservations
+  has_many :reserved_users, through: :reservations, source: :user
 
-    def default_image
-        images.first
-    end
+  def address
+    # [address_1, address_2, city, state, country_name].compact.join(", ")
+    [state, country_name].compact.join(", ")
+  end
 
-    def favourited_by?(user)
-        return if user.nil?
+  def default_image
+    images.first
+  end
 
-        favourited_users.include?(user)
-    end
+  def favourited_by?(user)
+    return if user.nil?
 
-    def available_dates
-        date_format = "%b %e"
-        next_reservation = reservations.future_reservations.order(checkout_date: :desc).first
-        return Date.tomorrow.strftime(date_format)..Date.today.end_of_year.strftime(date_format) if next_reservation.nil?
+    favourited_users.include?(user)
+  end
 
-        next_reservation.checkout_date.strftime(date_format)..Date.today.end_of_year.strftime(date_format)
-    end
+  def available_dates
+    date_format = "%b %e"
+    next_reservation = reservations.future_reservations.order(checkout_date: :desc).first
+    return Date.tomorrow.strftime(date_format)..Date.today.end_of_year.strftime(date_format) if next_reservation.nil?
+
+    next_reservation.checkout_date.strftime(date_format)..Date.today.end_of_year.strftime(date_format)
+  end
 end

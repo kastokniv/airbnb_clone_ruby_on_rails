@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddUserReferencesToReviews < ActiveRecord::Migration[7.0]
   def change
     Review.destroy_all

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 RSpec.describe "Api::Favourites", type: :request do
@@ -18,20 +20,20 @@ RSpec.describe "Api::Favourites", type: :request do
     end
 
     it "creates a new favourite" do
-      expect {
+      expect do
         post api_favourites_path, params: params, headers: headers
-      }.to change(Favourite, :count).by(1)
+      end.to change(Favourite, :count).by(1)
       expect(response.status).to eq 201
     end
   end
 
   describe "DELETE destroy" do
     it "deletes a favourite" do
-        favourite = create(:favourite)
-        expect {
-            delete api_favourite_path(favourite), headers: headers
-        }.to change(Favourite, :count).by(-1)
-        expect(response.status).to eq 204
+      favourite = create(:favourite)
+      expect do
+        delete api_favourite_path(favourite), headers: headers
+      end.to change(Favourite, :count).by(-1)
+      expect(response.status).to eq 204
     end
   end
 end

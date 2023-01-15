@@ -1,7 +1,7 @@
 # encoding : utf-8
+# frozen_string_literal: true
 
 MoneyRails.configure do |config|
-
   # To set the default currency
   #
   config.default_currency = :usd
@@ -25,8 +25,8 @@ MoneyRails.configure do |config|
 
   # Default ActiveRecord migration configuration values for columns:
   #
-  # config.amount_column = { prefix: '',           # column name prefix
-  #                          postfix: '_cents',    # column name  postfix
+  # config.amount_column = { prefix: "",           # column name prefix
+  #                          postfix: "_cents",    # column name  postfix
   #                          column_name: nil,     # full column name (overrides prefix, postfix and accessor name)
   #                          type: :integer,       # column type
   #                          present: true,        # column will be created
@@ -34,13 +34,13 @@ MoneyRails.configure do |config|
   #                          default: 0
   #                        }
   #
-  # config.currency_column = { prefix: '',
-  #                            postfix: '_currency',
+  # config.currency_column = { prefix: "",
+  #                            postfix: "_currency",
   #                            column_name: nil,
   #                            type: :string,
   #                            present: true,
   #                            null: false,
-  #                            default: 'USD'
+  #                            default: "USD"
   #                          }
 
   # Register a custom currency
@@ -90,19 +90,19 @@ MoneyRails.configure do |config|
   # Example (using default localization from rails-i18n):
   #
   # I18n.locale = :en
-  # Money.new(10_000_00, 'USD').format # => $10,000.00
+  # Money.new(10_000_00, "USD").format # => $10,000.00
   # I18n.locale = :es
-  # Money.new(10_000_00, 'USD').format # => $10.000,00
+  # Money.new(10_000_00, "USD").format # => $10.000,00
   #
   # For the legacy behaviour of "per currency" localization (formatting depends
   # only on currency):
   # config.locale_backend = :currency
   #
   # Example:
-  # Money.new(10_000_00, 'USD').format # => $10,000.00
-  # Money.new(10_000_00, 'EUR').format # => €10.000,00
+  # Money.new(10_000_00, "USD").format # => $10,000.00
+  # Money.new(10_000_00, "EUR").format # => €10.000,00
   #
-  # In case you don't need localization and would like to use default values
+  # In case you don"t need localization and would like to use default values
   # (can be redefined using config.default_format):
   # config.locale_backend = nil
 

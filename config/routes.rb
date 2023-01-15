@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -8,7 +10,7 @@ Rails.application.routes.draw do
   namespace :api do
     get "/users_by_email" => "users_by_emails#show", as: :users_by_email
 
-    resources :favourites, only: [:create, :destroy]
+    resources :favourites, only: %i[create destroy]
   end
 
   resources :properties, only: :show do
@@ -16,4 +18,6 @@ Rails.application.routes.draw do
   end
 
   resources :reservation_payments, only: :create
+
+  resources :profiles, only: %i[show update]
 end
