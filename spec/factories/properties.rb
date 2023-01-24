@@ -2,6 +2,7 @@
 
 FactoryBot.define do
   factory :property do
+    user
     name { "MyString" }
     headline { "MyString" }
     description { "MyText" }

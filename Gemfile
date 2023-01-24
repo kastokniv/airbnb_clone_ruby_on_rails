@@ -16,6 +16,7 @@ gem "jsonapi-serializer"
 gem "money-rails", "~>1.12"
 gem "pg", "~> 1.1"
 gem "puma", "~> 5.0"
+gem "pundit"
 gem "rails", "~> 7.0.3"
 gem "redis", "~> 4.0"
 gem "rubocop", require: false

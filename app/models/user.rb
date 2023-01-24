@@ -7,7 +7,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one :profile, dependent: :destroy
-  has_one_attached :picture
 
   has_many :favourites, dependent: :destroy
   has_many :favourited_properties, through: :favourites, source: :property
@@ -15,6 +14,12 @@ class User < ApplicationRecord
   has_many :payments, through: :reservations
   has_many :reserved_properties, through: :reservations, source: :property
   has_many :reviews, dependent: :destroy
+  has_many :properties, dependent: :destroy
+  has_many :receiving_payments, through: :properties, source: :payments
+
+  ROLES = %w[host]
+
+  validates :role, inclusion: { in: ROLES }, allow_nil: true
 
   after_create :create_profile
   def create_profile
@@ -23,4 +28,16 @@ class User < ApplicationRecord
   end
 
   delegate :full_name, to: :profile
+
+  def host?
+    role == "host"
+  end
+
+  def hostify!
+    update!(role: "host")
+  end
+
+  def customer?
+    role.blank?
+  end
 end
