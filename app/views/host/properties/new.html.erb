@@ -52,6 +52,12 @@
                     <%= f.label :country_code, "Country", class: "block text-sm font-medium text-gray-700" %>
                     <%= f.country_select :country_code, { priority_countries: ["US", "JP", "NP"] }, class: "mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
                   </div>
+                  <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+                    <%= f.label :price_cents, class: "block text-sm font-medium text-gray-700"  %>
+                    <%= f.number_field :price_cents, class: "mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
+                    <%= f.label :price_currency, class: "block text-sm font-medium text-gray-700"  %>
+                    <%= f.select :price_currency, options_for_select(['USD', 'JPY', 'NPR']), class: "mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
+                  </div>
                 </div>
               </div>
               <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">

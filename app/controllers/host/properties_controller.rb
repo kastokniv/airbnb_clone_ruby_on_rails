@@ -33,7 +33,9 @@ module Host
         :city,
         :state, 
         :zip_code, 
-        :country_code
+        :country_code,
+        :price_cents,
+        :price_currency
       )
     end
   end
