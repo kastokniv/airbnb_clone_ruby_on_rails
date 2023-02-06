@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Profile < ApplicationRecord
   include Countriable
 
@@ -8,7 +6,7 @@ class Profile < ApplicationRecord
   has_one_attached :picture
 
   geocoded_by :address
-  after_validation :geocode, if: -> { address.present? && latitude.blank? && longitude.blank? }
+  after_validation :geocode, if: -> { latitude.blank? && longitude.blank? }
 
   def address
     [state, country_name].compact.join(", ")

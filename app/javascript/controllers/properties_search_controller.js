@@ -3,7 +3,7 @@ import { Datepicker } from 'vanillajs-datepicker';
 
 export default class extends Controller {
   static targets = ['checkin', 'checkout'];
-  
+
   connect() {
     const checkinPicker = new Datepicker(this.checkinTarget, {
       minDate: this.element.dataset.defaultCheckinDate

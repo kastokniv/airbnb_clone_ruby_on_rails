@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require "rails_helper"
 
 RSpec.describe "Profiles", type: :request do
@@ -16,7 +14,7 @@ RSpec.describe "Profiles", type: :request do
   end
 
   describe "PUT update" do
-    it "succeeds" do 
+    it "succeeds" do
       profile.update! first_name: "Foo", last_name: "Bar"
 
       put profile_path(profile), params: {

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module PropertyHelper
   def property_rating_percentage(property:, rating:)
     return 0 if property.reviews_count.zero?

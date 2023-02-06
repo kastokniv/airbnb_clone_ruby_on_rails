@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require "rails_helper"
 
 RSpec.describe "Accounts", type: :request do
@@ -15,8 +13,8 @@ RSpec.describe "Accounts", type: :request do
   end
 
   describe "PUT update" do
-    it "succeeds" do 
-      user.update! email: "foobar@example.com"
+    it "succeeds" do
+      user.update! email: "dev@example.com"
       put account_path(user), params: {
         account: {
           email: "foo@bar.com"

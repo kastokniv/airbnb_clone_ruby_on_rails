@@ -3,6 +3,7 @@
 module Properties
   class ReservationsController < ApplicationController
     before_action :authenticate_user!
+
     def new
       @property = Property.find(params[:property_id])
       @reservation = @property.reservations.new

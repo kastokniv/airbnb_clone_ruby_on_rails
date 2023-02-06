@@ -92,7 +92,7 @@ export default class extends Controller {
   submitReservationComponent(e) {
     if (isEmpty(this.checkinTarget.value) || isEmpty(this.checkoutTarget.value)) {
       Swal.fire({
-        text: 'Please select both the check-in and the check-out dates',
+        text: 'Please select both the checkin and the checkout dates',
         icon: 'error'
       });
       return;

@@ -1,8 +1,6 @@
-# frozen_string_literal: true
-
 require "rails_helper"
 
-RSpec.describe "Api::Favourites", type: :request do
+RSpec.describe "Api::Favourite", type: :request do
   let(:headers) do
     { "ACCEPT" => "application/json" }
   end
@@ -20,9 +18,9 @@ RSpec.describe "Api::Favourites", type: :request do
     end
 
     it "creates a new favourite" do
-      expect do
+      expect {
         post api_favourites_path, params: params, headers: headers
-      end.to change(Favourite, :count).by(1)
+      }.to change(Favourite, :count).by(1)
       expect(response.status).to eq 201
     end
   end
@@ -30,9 +28,9 @@ RSpec.describe "Api::Favourites", type: :request do
   describe "DELETE destroy" do
     it "deletes a favourite" do
       favourite = create(:favourite)
-      expect do
+      expect {
         delete api_favourite_path(favourite), headers: headers
-      end.to change(Favourite, :count).by(-1)
+      }.to change(Favourite, :count).by(-1)
       expect(response.status).to eq 204
     end
   end

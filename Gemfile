@@ -1,11 +1,9 @@
-# frozen_string_literal: true
-
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.0.0"
 
-gem "bootsnap", require: false
+gem "bootsnap", require: false # Reduces boot times through caching; required in config/boot.rb
 gem "country_select", "~> 6.0"
 gem "devise"
 gem "geocoder"
@@ -19,7 +17,6 @@ gem "puma", "~> 5.0"
 gem "pundit"
 gem "rails", "~> 7.0.3"
 gem "redis", "~> 4.0"
-gem "rubocop", require: false
 gem "sassc-rails" # Use Sass to process CSS
 gem "sprockets-rails"
 gem "stimulus-rails"

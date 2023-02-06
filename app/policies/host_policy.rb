@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class HostPolicy < ApplicationPolicy
   def index?
     user.host?
@@ -7,7 +5,7 @@ class HostPolicy < ApplicationPolicy
 
   def new?
     user.host?
-  end  
+  end
 
   def show?
     user.host?

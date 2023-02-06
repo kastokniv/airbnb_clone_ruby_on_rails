@@ -1,8 +1,6 @@
-# frozen_string_literal: true
-
 require "rails_helper"
 
-RSpec.describe "Property", type: :request do
+RSpec.describe "Properties", type: :request do
   describe "GET show" do
     let(:property) { create(:property) }
 

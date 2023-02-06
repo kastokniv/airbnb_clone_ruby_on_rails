@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class AddMoneyRailsFieldsToPayments < ActiveRecord::Migration[7.0]
   def change
     add_monetize :payments, :subtotal, amount: { null: true, default: nil }, currency: { null: true, default: nil }

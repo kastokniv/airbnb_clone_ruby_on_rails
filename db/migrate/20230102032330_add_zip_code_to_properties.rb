@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class AddZipCodeToProperties < ActiveRecord::Migration[7.0]
   def change
     add_column :properties, :zip_code, :string

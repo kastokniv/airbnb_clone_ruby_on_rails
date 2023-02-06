@@ -1,8 +1,6 @@
-# frozen_string_literal: true
-
 require "rails_helper"
 
-RSpec.describe "Homes", type: :request do
+RSpec.describe "Properties::Reservations", type: :request do
   let(:property) { create(:property) }
   let(:user) { create(:user) }
 
@@ -11,8 +9,8 @@ RSpec.describe "Homes", type: :request do
   describe "GET new" do
     it "succeeds" do
       get new_property_reservation_path(property), params: {
-        checkin_date: "01/10/2023",
-        checkout_date: "01/12/2023"
+        checkin_date: "02/02/2023",
+        checkout_date: "02/05/2023"
       }
     end
   end
