@@ -121,15 +121,28 @@
           <%= image_tag current_user&.profile&.picture.present? ? current_user&.profile&.picture : default_profile_picture, class: "h-10 w-10 rounded-full" %>
         </div>
         <div class="ml-3">
-          <div class="text-base font-medium text-white"><%= current_user&.full_name %></div>
+          <div class="text-base font-medium text-gray-200"><%= current_user&.full_name %></div>
           <div class="text-sm font-medium text-gray-400"><%= current_user&.email %></div>
         </div>
       </div>
-      <div class="mt-3 px-2 space-y-1">
-        <a href="#" class="block rounded-md py-2 px-3 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Your Profile</a>
-        <a href="#" class="block rounded-md py-2 px-3 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Settings</a>
-        <a href="#" class="block rounded-md py-2 px-3 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Sign out</a>
-      </div>
+        <div class="py-1" role="none">
+          <% if user_signed_in? %>
+            <%= link_to "My Profile", profile_path(current_user.profile), class: "block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100" %>
+            <%= link_to "Log out", destroy_user_session_path, data: { "turbo-method": :delete }, class: "block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100" %>
+          <% else %>
+            <%= link_to "Sign Up", new_user_registration_path, class: "block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100" %>
+            <%= link_to "Log in", new_user_session_path, class: "block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100" %>
+          <% end %>
+          <div class="py-1" role="none">
+            <% if user_signed_in? && !current_user.host? %>
+              <%= link_to "Host your home", hostify_path(user_id: current_user.id), data: { "turbo-method": :put }, class: "block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100", role: "menuitem", tabindex: "-1", id: "user-menu-item-0" %>
+            <% elsif user_signed_in? && current_user.host? %>
+              <%= link_to "Host Dashboard", host_dashboard_path, class: "block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100", role: "menuitem", tabindex: "-1", id: "user-menu-item-0" %>
+            <% elsif !user_signed_in? %>
+              <%= link_to "Host your home", new_user_registration_path, class: "block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100", role: "menuitem", tabindex: "-1", id: "user-menu-item-0" %>
+            <% end %>
+          </div>
+        </div>
     </div>
   </nav>
 </header>
