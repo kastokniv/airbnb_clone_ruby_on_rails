@@ -95,9 +95,9 @@ docker-compose up
 You can check the Reservation site on your localhost
 `localhost:3000`
 
-![My Image](../screenshot/airbnb_home.png)
-![My Image](../screenshot/profile.png)
-![My Image](../screenshot/property_1.png)
-![My Image](../screenshot/property_2.png)
-![My Image](../screenshot/stripe_paymemnt.png)
-![My Image](../screenshot/host_dashboard.png)
+![My Image](screenshot/airbnb_home.png)
+![My Image](screenshot/profile.png)
+![My Image](screenshot/property_1.png)
+![My Image](screenshot/property_2.png)
+![My Image](screenshot/stripe_payment.png)
+![My Image](screenshot/host_dashboard.png)
