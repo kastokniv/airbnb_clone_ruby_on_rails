@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 RSpec.describe "Host::Properties", type: :request do
@@ -40,10 +42,10 @@ RSpec.describe "Host::Properties", type: :request do
         expect do
           post host_properties_path, params: {
             property: {
-              name: "new property name",
+              name: "new property name"
             }
           }
-        end.not_to change { Property.count }
+        end.not_to(change { Property.count })
         expect(response).to be_successful
       end
     end

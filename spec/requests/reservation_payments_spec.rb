@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 RSpec.describe "ReservationPayments", type: :request do
@@ -26,15 +28,15 @@ RSpec.describe "ReservationPayments", type: :request do
 
   describe "POST create" do
     it "succeeds in creating a reservation" do
-      expect {
+      expect do
         post reservation_payments_path, params: payment_params
-      }.to change { Reservation.count }.by(1)
+      end.to change { Reservation.count }.by(1)
     end
 
     it "succeeds in creating a payment" do
-      expect {
+      expect do
         post reservation_payments_path, params: payment_params
-      }.to change { Payment.count }.by(1)
+      end.to change { Payment.count }.by(1)
     end
   end
 end

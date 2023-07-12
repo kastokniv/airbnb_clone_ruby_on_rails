@@ -20,7 +20,7 @@ class ReservationPaymentsController < ApplicationController
       checkin_date: Date.strptime(payment_params[:checkin_date], Date::DATE_FORMATS[:us_short_date]),
       checkout_date: Date.strptime(payment_params[:checkout_date], Date::DATE_FORMATS[:us_short_date])
     )
-    payment = Payment.create(
+    Payment.create(
       reservation: reservation,
       subtotal: Money.from_amount(BigDecimal(payment_params[:subtotal])),
       cleaning_fee: Money.from_amount(BigDecimal(payment_params[:cleaning_fee])),

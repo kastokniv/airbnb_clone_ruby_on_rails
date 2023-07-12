@@ -1,0 +1,17 @@
+Style/StringLiterals:
+  Enabled: false
+
+Layout/IndentationWidth:
+  Enabled: true
+  Width: 2
+
+Style/Documentation:
+  Enabled: false
+
+Lint/EmptyMethod:
+  Enabled: false
+
+AllCops:
+  Exclude:
+    - "db/schema.rb"
+    - "db/migrate/*.rb"

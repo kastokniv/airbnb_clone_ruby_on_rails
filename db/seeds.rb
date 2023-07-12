@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 user_pictures = []
 
 6.times do
@@ -7,7 +9,6 @@ end
 me = User.create(email: "kastokniv@gmail.com", password: "password")
 me.profile.update(first_name: "Prasant", last_name: "Dev")
 me.profile.picture.attach(io: user_pictures[0], filename: "#{me.full_name}.jpg")
-
 
 5.times do |i|
   user = User.create(email: Faker::Internet.email, password: "password")
@@ -28,9 +29,11 @@ end
     price: Money.from_amount((25..100).to_a.sample)
   )
 
-  property.images.attach(io: File.open(Rails.root.join("db", "sample", "images", "property_#{i + 1}.jpg")), filename: property.name)
+  property.images.attach(io: File.open(Rails.root.join("db", "sample", "images", "property_#{i + 1}.jpg")),
+                         filename: property.name)
 
   (1..5).to_a.sample.times do
-    Review.create(reviewable: property, rating: (1..5).to_a.sample, title: Faker::Lorem.word, body: Faker::Lorem.paragraph, user: User.all.sample)
+    Review.create(reviewable: property, rating: (1..5).to_a.sample, title: Faker::Lorem.word,
+                  body: Faker::Lorem.paragraph, user: User.all.sample)
   end
 end

@@ -24,15 +24,15 @@ module Host
 
     def property_params
       params.require(:property).permit(
-        :name, 
-        :headline, 
-        :description, 
-        :images, 
-        :address_1, 
-        :address_2, 
+        :name,
+        :headline,
+        :description,
+        :images,
+        :address_1,
+        :address_2,
         :city,
-        :state, 
-        :zip_code, 
+        :state,
+        :zip_code,
         :country_code,
         :price_cents,
         :price_currency

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -17,6 +19,7 @@ gem "puma", "~> 5.0"
 gem "pundit"
 gem "rails", "~> 7.0.3"
 gem "redis", "~> 4.0"
+gem 'rubocop', "~> 1.54", require: false
 gem "sassc-rails" # Use Sass to process CSS
 gem "sprockets-rails"
 gem "stimulus-rails"

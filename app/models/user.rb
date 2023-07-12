@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -15,7 +17,7 @@ class User < ApplicationRecord
   has_many :properties, dependent: :destroy
   has_many :receiving_payments, through: :properties, source: :payments
 
-  ROLES = %w[host]
+  ROLES = %w[host].freeze
 
   validates :role, inclusion: { in: ROLES }, allow_nil: true
 

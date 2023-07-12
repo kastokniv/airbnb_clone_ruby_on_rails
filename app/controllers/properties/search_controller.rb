@@ -5,15 +5,13 @@ module Properties
     def index
       @properties = Property.all
 
-      if search_params[:city].present?
-        @properties = @properties.city(search_params[:city])
-      end
+      @properties = @properties.city(search_params[:city]) if search_params[:city].present?
 
-      if search_params[:country_code].present?
-        @properties = @properties.country_code(search_params[:country_code])
-      end
+      @properties = @properties.country_code(search_params[:country_code]) if search_params[:country_code].present?
 
-      properties_without_reservations = @properties.includes(:reservations).select { |property| property.reservations.size.zero? }
+      properties_without_reservations = @properties.includes(:reservations).select do |property|
+        property.reservations.empty?
+      end
 
       if search_params[:checkin_date] && search_params[:checkout_date]
         @properties = @properties.between_dates(search_params[:checkin_date], search_params[:checkout_date])

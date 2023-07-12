@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 RSpec.describe "Host::Dashboard", type: :request do
@@ -16,9 +18,9 @@ RSpec.describe "Host::Dashboard", type: :request do
     context "without valid role" do
       it "fails" do
         user.update! role: nil
-        expect {
+        expect do
           get host_dashboard_path
-        }.to raise_exception(Pundit::NotAuthorizedError)
+        end.to raise_exception(Pundit::NotAuthorizedError)
       end
     end
   end
