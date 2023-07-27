@@ -11,6 +11,12 @@ Style/Documentation:
 Lint/EmptyMethod:
   Enabled: false
 
+Metrics/MethodLength:
+  Max: 50
+
+Metrics/AbcSize:
+  Max: 100
+
 AllCops:
   Exclude:
     - "db/schema.rb"
