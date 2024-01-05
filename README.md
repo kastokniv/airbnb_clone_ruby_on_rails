@@ -84,6 +84,12 @@ If there is any problem try
  docker-compose run web bundle exec rails db:reset
 ```
 
+You can use the app as brand new, Or for seeded data run below command
+
+```
+ docker-compose run web rails  db:seed
+```
+
 FInally,
 
 ```
